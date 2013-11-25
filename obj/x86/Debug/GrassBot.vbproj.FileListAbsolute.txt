@@ -20,3 +20,14 @@ D:\Dropbox\_Projects\2013\GrassBot\ConsoleApplication1\obj\x86\Debug\GenerateRes
 D:\Dropbox\_Projects\2013\GrassBot\ConsoleApplication1\obj\x86\Debug\GrassBot.exe
 D:\Dropbox\_Projects\2013\GrassBot\ConsoleApplication1\obj\x86\Debug\GrassBot.xml
 D:\Dropbox\_Projects\2013\GrassBot\ConsoleApplication1\obj\x86\Debug\GrassBot.pdb
+C:\Users\provolot\Documents\GitHub\grassbot\obj\x86\Debug\GrassBot.exe
+C:\Users\provolot\Documents\GitHub\grassbot\obj\x86\Debug\GrassBot.xml
+C:\Users\provolot\Documents\GitHub\grassbot\obj\x86\Debug\GrassBot.pdb
+C:\Users\provolot\Documents\GitHub\grassbot\bin\Debug\grassbot.vb
+C:\Users\provolot\Documents\GitHub\grassbot\bin\Debug\GrassBot.exe
+C:\Users\provolot\Documents\GitHub\grassbot\bin\Debug\GrassBot.pdb
+C:\Users\provolot\Documents\GitHub\grassbot\bin\Debug\GrassBot.xml
+C:\Users\provolot\Documents\GitHub\grassbot\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\provolot\Documents\GitHub\grassbot\obj\x86\Debug\GrassBot.Resources.resources
+C:\Users\provolot\Documents\GitHub\grassbot\obj\x86\Debug\GenerateResource.read.1.tlog
+C:\Users\provolot\Documents\GitHub\grassbot\obj\x86\Debug\GenerateResource.write.1.tlog

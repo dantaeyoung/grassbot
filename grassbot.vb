@@ -187,24 +187,24 @@ Module GRASSBOT
         If (RhinoLaunchStringSuffix = "Application") Then
             ' only exit when we're in application mode.
 
-            Console.WriteLine("----------- Closing Grasshopper document ... -----------")
-            ' Close all grasshopper documents so we don't get the multi-save menu.
-            GH.CloseDocuments()
+            'Console.WriteLine("----------- Closing Grasshopper document ... -----------")
+            '' Close all grasshopper documents so we don't get the multi-save menu.
+            'GH.CloseDocuments()
 
 
-            Console.WriteLine("----------- Set modified = false ... -----------")
-            ' Set the document's modified flag to false so we are not
-            ' prompted to save.
-            Call objRhinoScript.DocumentModified(False)
+            'Console.WriteLine("----------- Set modified = false ... -----------")
+            '' Set the document's modified flag to false so we are not
+            '' prompted to save.
+            'Call objRhinoScript.DocumentModified(False)
 
-            Console.WriteLine("----------- Exit Rhino ... -----------")
-            ' Exit Rhino
-            Call objRhinoScript.Command("_-Exit", 0)
+            'Console.WriteLine("----------- Exit Rhino ... -----------")
+            '' Exit Rhino
+            'Call objRhinoScript.Command("_-Exit", 0)
 
-            'Dim newThread As New Thread(New ThreadStart(AddressOf ThreadMethod))
-            'newThread.SetApartmentState(ApartmentState.STA)
-            'newThread.Start()
-            'newThread.Join()
+            Dim newThread As New Thread(New ThreadStart(AddressOf ThreadMethod))
+            newThread.SetApartmentState(ApartmentState.STA)
+            newThread.Start()
+            newThread.Join()
 
 
 
@@ -385,7 +385,7 @@ Module GRASSBOT
         RunMacro = False
         ParamName = ""
         RhinoLaunchStringSuffix = "Interface"
-        ScreenshotLocation = "c:\wildcat_screenshot.png"
+        ScreenshotLocation = "c:\grassbot_screenshot.jpg"
 
         Return True
 
