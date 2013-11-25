@@ -187,6 +187,7 @@ Module GRASSBOT
         If (String.Compare(RhinoLaunchStringSuffix, "Application") = 0) Then
             ' only exit when we're in application mode.
 
+         
             'Console.WriteLine("----------- Closing Grasshopper document ... -----------")
             '' Close all grasshopper documents so we don't get the multi-save menu.
             'GH.CloseDocuments()
@@ -307,10 +308,10 @@ Module GRASSBOT
                     Case "/application"
 
                         If (Not String.Compare(CommandLineArgs(i + 1), "false", False)) Then
-
-                            RhinoLaunchStringSuffix = "Interface"
-                        Else
                             RhinoLaunchStringSuffix = "Application"
+
+                        Else
+                            RhinoLaunchStringSuffix = "Interface"
                         End If
 
                     Case "/newonly"
