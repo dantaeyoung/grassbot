@@ -50,7 +50,7 @@ Module GRASSBOT
 
 
 
-    Dim WildcatVersion As String = "v0.5.1_131112"
+    Dim WildcatVersion As String = "v0.5_131125"
 
 
     <STAThread()>
@@ -222,7 +222,7 @@ Module GRASSBOT
         Console.WriteLine("----------- Closing Grasshopper documents ... -----------")
         'Save and close all grasshopper documents so we don't get the multi-save menu.
         GH.SaveDocument()
-        GH.CloseDocument()
+        'GH.CloseDocument()
 
 
         Console.WriteLine("----------- Set modified = false ... -----------")
