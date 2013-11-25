@@ -308,9 +308,9 @@ Module GRASSBOT
 
                         If (Not String.Compare(CommandLineArgs(i + 1), "false", False)) Then
 
-                            RhinoLaunchStringSuffix = "Application"
-                        Else
                             RhinoLaunchStringSuffix = "Interface"
+                        Else
+                            RhinoLaunchStringSuffix = "Application"
                         End If
 
                     Case "/newonly"
