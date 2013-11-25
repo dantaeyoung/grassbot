@@ -184,7 +184,7 @@ Module GRASSBOT
 
         End If
 
-        If (RhinoLaunchStringSuffix = "Application") Then
+        If (String.Compare(RhinoLaunchStringSuffix, "Application") = 0) Then
             ' only exit when we're in application mode.
 
             'Console.WriteLine("----------- Closing Grasshopper document ... -----------")
@@ -220,7 +220,8 @@ Module GRASSBOT
 
 
         Console.WriteLine("----------- Closing Grasshopper documents ... -----------")
-        ' Close all grasshopper documents so we don't get the multi-save menu.
+        'Save and close all grasshopper documents so we don't get the multi-save menu.
+        GH.SaveDocument()
         GH.CloseDocument()
 
 
@@ -385,7 +386,7 @@ Module GRASSBOT
         RunMacro = False
         ParamName = ""
         RhinoLaunchStringSuffix = "Interface"
-        ScreenshotLocation = "c:\wildcat_screenshot.png"
+        ScreenshotLocation = "c:\grassbot_screenshot.jpg"
 
         Return True
 
