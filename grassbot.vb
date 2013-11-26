@@ -38,6 +38,7 @@ Module GRASSBOT
     Dim RunID As String
     Dim RhinoLaunchStringSuffix As String
     Dim ScreenshotLocation As String
+    Dim RhinoVersion As String
 
     Dim objRhinoApp As Object
     Dim objRhinoScript As Object
@@ -78,20 +79,43 @@ Module GRASSBOT
     Function RunWildcat()
 
 
-        Console.WriteLine("----------- Opening Rhino as " & RhinoLaunchStringSuffix & " .... -----------")
 
+        If (String.Compare(RhinoVersion, "default") = 0) Then
 
-
-        On Error Resume Next
-        objRhinoApp = CreateObject("Rhino5x64." & RhinoLaunchStringSuffix)
-        If (Err.Number <> 0) Then
-
-            Console.WriteLine("Failed to open Rhino5, trying to open Rhino4")
+            Console.WriteLine("----------- Opening Rhino 5 64-bit as " & RhinoLaunchStringSuffix & " .... -----------")
 
             On Error Resume Next
-            objRhinoApp = CreateObject("Rhino4. " & RhinoLaunchStringSuffix)
+            objRhinoApp = CreateObject("Rhino5x64." & RhinoLaunchStringSuffix)
             If (Err.Number <> 0) Then
-                Console.WriteLine("Failed to open Rhino4")
+
+                Console.WriteLine("Failed to open Rhino 5 64-bit, trying to open Rhino 5 32-bit ")
+
+                On Error Resume Next
+                objRhinoApp = CreateObject("Rhino5. " & RhinoLaunchStringSuffix)
+                If (Err.Number <> 0) Then
+                    Console.WriteLine("Failed to open Rhino 5 32-bit, trying to open Rhino 4")
+
+                    On Error Resume Next
+                    objRhinoApp = CreateObject("Rhino4. " & RhinoLaunchStringSuffix)
+                    If (Err.Number <> 0) Then
+                        Console.WriteLine("Failed to open Rhino 4")
+                        Exit Function
+                    End If
+
+                    Exit Function
+                End If
+
+
+            End If
+
+        Else
+
+            Console.WriteLine("----------- Opening Rhino as " & RhinoVersion & "." & RhinoLaunchStringSuffix & " .... -----------")
+
+            On Error Resume Next
+            objRhinoApp = CreateObject(RhinoVersion & "." & RhinoLaunchStringSuffix)
+            If (Err.Number <> 0) Then
+                Console.WriteLine("Failed to open Rhino")
                 Exit Function
             End If
 
@@ -187,7 +211,7 @@ Module GRASSBOT
         If (String.Compare(RhinoLaunchStringSuffix, "Application") = 0) Then
             ' only exit when we're in application mode.
 
-         
+
             'Console.WriteLine("----------- Closing Grasshopper document ... -----------")
             '' Close all grasshopper documents so we don't get the multi-save menu.
             'GH.CloseDocuments()
@@ -297,6 +321,9 @@ Module GRASSBOT
                     Case "/runid"
                         RunID = CommandLineArgs(i + 1)
 
+                    Case "/rhversion"
+                        RunID = CommandLineArgs(i + 1)
+
                     Case "/bake"
 
                         If (Not String.Compare(CommandLineArgs(i + 1), "false", False)) Then
@@ -362,6 +389,7 @@ Module GRASSBOT
                           "/tempdir path                Path to temporary directory (no trailing slash)" & vbNewLine & _
                           "/bake (true/false)           If Grasshopper should bake geometry" & vbNewLine & _
                           "/param name                  TBD - Changes CATIA 'name' param based on 'name' gh node." & vbNewLine & _
+                          "/rhversion (Rhino5x64/Rhino5/Rhino4) Forces Grassbot to load a specific version of Rhino." & vbNewLine & _
                           "/application (true/false)    If Grassbot should load Rhino as Application or Interface. " & vbNewLine & _
                           "                                 - Application reopens Rhino; Interface reuses same Rhino instance." & vbNewLine)
         Console.WriteLine("Example: GRASSBOT.exe /rhfile D:/GRASSBOT/test.3dm /ghfile D:\WILDCAT\MakeCircles.gh /bakename BAKENODE /tempdir C:\TEMP")
@@ -388,6 +416,7 @@ Module GRASSBOT
         ParamName = ""
         RhinoLaunchStringSuffix = "Interface"
         ScreenshotLocation = "c:\grassbot_screenshot.jpg"
+        RhinoVersion = "default"
 
         Return True
 
