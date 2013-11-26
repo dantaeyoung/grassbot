@@ -22,6 +22,8 @@ Usage: GRASSBOT.exe /rhfile rhino-file /ghfile grasshopper-file [/bakename] [/te
 
 /param name                  TBD - Changes CATIA 'name' param based on 'name' gh node.
 
+/rhversion (Rhino5x64/Rhino5/Rhino4) Forces Grassbot to load a specific version of Rhino.
+                        
 /application (true/false)    If Grassbot should load Rhino as Application or Interface.
                                  - Application reopens Rhino; Interface reuses same Rhino instance.
 
